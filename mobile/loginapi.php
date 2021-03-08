@@ -13,7 +13,7 @@
 	// $contact = $_POST['contact'];
 	$password = $_POST['password'];
 
-    $sql = "SELECT * FROM user WHERE username = '".$username."'  AND password = '".$password."' ";
+    $sql = "SELECT * FROM user WHERE username = '".$username."'  AND password = '".$password."' AND usertype ='Donor' ";
 
 	$result = mysqli_query($db, $sql);
 

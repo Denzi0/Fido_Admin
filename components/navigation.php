@@ -8,6 +8,7 @@
         <a href="organization.php" class="list-group-item list-group-item-action bg-light">Organization</a>
         <a href="users.php" class="list-group-item list-group-item-action bg-light">Users</a>
         <a href="donations.php" class="list-group-item list-group-item-action bg-light">Donations</a>
+        <a href="requestList.php" class="list-group-item list-group-item-action bg-light">Request List</a>
         <a href="adminRequestDonation.php" class="list-group-item list-group-item-action bg-light">Request Donation</a>
       </div>
     </div>

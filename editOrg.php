@@ -17,14 +17,14 @@
         session_start();
    
         if(isset($_POST['submit'])){
-            $sql = "UPDATE organization SET orgName = :orgname, orgPersonInCharge= :orgincharge,
+            $sql = "UPDATE organization SET orgPersonInCharge= :orgincharge,
             orgContact = :orgcontact,orgAddress= :orgaddress,
             orgEmail= :orgemail,orgTinNumber = :orgtinNo
             WHERE orgID = :orgID";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
             ':orgID' => $_POST['orgID'],
-            ':orgname' => $_POST['orgname'],
+            // ':orgname' => $_POST['orgname'],
             ':orgincharge' => $_POST['orgincharge'],
             ':orgcontact' => $_POST['orgcontact'],
             ':orgaddress' => $_POST['orgaddress'],
@@ -44,7 +44,7 @@
             return;
         }
         $orgID = htmlentities($row['orgID']);
-        $orgName = htmlentities($row['orgName']);
+        // $orgName = htmlentities($row['orgName']);
         $orgPerson = htmlentities($row['orgPersonInCharge']);
         $orgContact = htmlentities($row['orgContact']);
         $orgAddress = htmlentities($row['orgAddress']);
@@ -57,12 +57,12 @@
         oninput='orgconfirmpass.setCustomValidity(orgconfirmpass.value != orgpassword.value ? "Passwords do not match." : "")'>
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="orgname" class="form-label">Organization Name</label>
                         <input pattern=".{3,}" required title="3 characters minimum" type="text" name="orgname" id="orgname"
-                            class="form-control" value="<?= $orgName?>" required>
+                            class="form-control" value="" required>
                         <div class="invalid-feedback">Please input value. Name must be 3 letters and above</div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label for="orgincharge">Person In-charge</label>

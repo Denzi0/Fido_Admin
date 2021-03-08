@@ -17,8 +17,31 @@
                         <div class="card-header bg-primary text-white">
                             <h2 class="text-center">Request Donation</h2>
                         </div>
+                       <div class="form-group mt-3">
+                        <!--input Organization name --->
+                            <div class="col-md-12">
+                                <label for="requestname" class="form-label">Request Name</label>
+                                <input pattern=".{3,}" type="text" name="requestname" id="requestname"
+                                    class="form-control" required>
+                                <div class="invalid-feedback">Please input value</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <!--input Organization name --->
+                            <div class="col-md-12">
+                                <label for="requestquantity" class="form-label">Quantity</label>
+                                <input pattern=".{3,}" type="text" name="requestquantity" id="requestquantity"
+                                    class="form-control" required>
+                                <div class="invalid-feedback">Please input value</div>
+                            </div>
+                        </div>
                         <div class="card-body">
-                            <textarea name="request" class="w-100"></textarea>
+                            <label for="requestquantity" class="form-label">Description</label>
+                            <textarea id="requestquantity" name="request" class="w-100"></textarea>
+                        </div>
+                         <div class="card-body">
+                            
+                             <button class="btn btn-primary" id="requestButton" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>

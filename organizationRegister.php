@@ -82,7 +82,7 @@
                             <input pattern=".{3,}" type="text" name="orgname" id="orgname"
                                 class="form-control" required>
                             <div class="invalid-feedback">Please input value. Name must be 3 letters and above</div>
-                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -180,7 +180,6 @@
                                 icon: "success",
                                 });
                         }
-
                         form.classList.add('was-validated');
                     }, false);
                 });
