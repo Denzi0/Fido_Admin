@@ -113,7 +113,7 @@
 
                     <div class="form-group">
                         <label for="orgtinNo">TIN No.</label>
-                        <input placeholder="XXX-XXX-XXX-XXX" type="text"
+                        <input pattern="[0-9]+" placeholder="XXX-XXX-XXX-XXX" type="text"
                             id="orgtinNo" class="form-control" name="orgtinNo" required>
                         <div class="invalid-feedback">Invalid TIN No. Must have 9 numbers</div>
                     </div>

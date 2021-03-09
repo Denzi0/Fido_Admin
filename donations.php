@@ -27,6 +27,7 @@
                 <th>Date</th>
                 <th>Received</th>
                 <th>StatusID</th>
+                <th>Action</th>
 
             </tr>
         </thead>
@@ -51,6 +52,8 @@
                     echo (htmlentities($row['date_received']));
                     echo ("</td><td>");
                     echo (htmlentities($row['statusID']));
+                    echo ("</td><td>");
+                    echo ('<a class="btn btn-primary" href="donationUpdate.php?donationID=' .$row['donationID'] . '">Update</a>');
                     echo ("</td></tr>");
                 }
 
@@ -58,6 +61,7 @@
         
         </tbody>
     </table>    
+    
     <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
         <h2 id="donor">Donations</h2>
         <thead class="thead-dark">
