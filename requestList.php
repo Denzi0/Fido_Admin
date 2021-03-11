@@ -17,7 +17,7 @@
     <?php include_once('components/navbar.php')?>
 
     <div class="container-fluid">
-     <table id="dataTableReq" class="table table-striped table-bordered mt-3" style="width:100%">
+     <table id="dataTableReq" class="table-responsive table table-striped table-bordered mt-3" style="width:100%">
         <h2 id="donorDonation">Donation Requests</h2>
         <thead>
             <tr>

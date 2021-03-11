@@ -46,28 +46,30 @@
     <div class="container-fluid">
         <form id="form" method="POST" class="form-group needs-validation" novalidate style="margin-top:50px;")'>
             <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class='input-group' id='datetimepicker'>
-                        <input type='date' name="date_received" class="form-control" id='datetimepicker' required />
-                        <div class="invalid-feedback">Please input Value</div>
-                    </div>
-                    <!-- <div class="form-group">
-                        <label for="statusID">StatusID</label>
-                        <input type="text" required name="statusID" id="statusID" class="form-control">
-                        <div class="invalid-feedback">Please input Value</div>
-                    </div> -->
-                    <div class="form-group">
-                        <select class="form-control mt-3 w-100" name="statusID" id="statusID" aria-label=".form-select-lg example" required>
-                                <option selected>Open this select menu</option>
-                                <option value="1">Pending</option>
-                                <option value="2">Donation Accepted</option>
-                                <option value="3">Ready to Claim</option>
-                                <option value="4">Claim by Organization</option>
-                        </select>
-                        <div class="invalid-feedback">Please input Value</div>
-                    </div>
-                    <input type="hidden" name="donationID" value="<?= $donationID?>">
-                    <input class="btn btn-primary mt-4" type="submit" name="submit" id="update" value="UPDATE">
+                <div class="card w-50">
+                <div class="card-body">
+                        <div class='input-group' id='datetimepicker'>
+                            <input type='date' name="date_received" class="form-control" id='datetimepicker' required />
+                            <div class="invalid-feedback">Please input Value</div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="statusID">StatusID</label>
+                            <input type="text" required name="statusID" id="statusID" class="form-control">
+                            <div class="invalid-feedback">Please input Value</div>
+                        </div> -->
+                        <div class="form-group">
+                            <select class="form-control mt-3 w-100" name="statusID" id="statusID" aria-label=".form-select-lg example" required>
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">Pending</option>
+                                    <option value="2">Donation Accepted</option>
+                                    <option value="3">Ready to Claim</option>
+                                    <option value="4">Claim by Organization</option>
+                            </select>
+                            <div class="invalid-feedback">Please input Value</div>
+                        </div>
+                        <input type="hidden" name="donationID" value="<?= $donationID?>">
+                        <input class="btn btn-primary mt-4" type="submit" name="submit" id="update" value="UPDATE">
+                </div>
                 </div>
         </form>
     </div>

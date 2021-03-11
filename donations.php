@@ -14,7 +14,58 @@
     <?php include_once('components/navigation.php')?>
     <?php include_once('components/navbar.php')?>
     <div class="container-fluid">
-     <table id="dataTableDon" class="table table-striped table-bordered " style="width:100%">
+   
+        <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+            <h2 id="donor">Donations</h2>
+            <thead class="thead-dark">
+                <tr>
+                    <th>DonationID</th>
+                    <th>Donor Name</th>
+                    <th>Donation Name</th>
+                    <th>DonationType Name</th>
+                    <th>Quantity</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Received</th>
+                    <th>Status</th>
+                    <th>Update</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                        echo "<tr><td>";
+                        echo(htmlentities($row['donationID']));
+                        echo ("</td><td>");
+                        echo(htmlentities($row['donorName']));
+                        echo ("</td><td>");
+                        echo(htmlentities($row['donationName']));
+                        echo ("</td><td>");
+                        echo (htmlentities($row['donationTypeDescription']));
+                        echo ("</td><td>");
+                        echo (htmlentities($row['donation_quantity']));
+                        echo ("</td><td>");
+                        echo (htmlentities($row['donation_description']));
+                        echo ("</td><td>");
+                        echo (htmlentities($row['date']));
+                        echo ("</td><td>");
+                        echo (htmlentities($row['date_received']));
+                        echo ("</td><td class='text-success'>");
+                        echo (htmlentities($row['statusDescription']));
+                        
+                        echo ("</td><td>");
+                        echo ('<a class="btn btn-primary" href="donationUpdate.php?donationID=' .$row['donationID'] . '">Update</a>');
+                        echo ("</td></tr>");
+                    }
+
+                ?>
+            
+            </tbody>
+        </table>   
+   
+
+   <table id="dataTableDon" class="table table-striped table-bordered " style="width:100%">
         <h2 id="donorDonation">Donations</h2>
         <thead class="thead-dark">
             <tr>
@@ -62,50 +113,6 @@
         </tbody>
     </table>    
     
-    <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
-        <h2 id="donor">Donations</h2>
-        <thead class="thead-dark">
-            <tr>
-                <th>DonationID</th>
-                <th>Donor Name</th>
-                <th>Donation Name</th>
-                <th>DonationType Name</th>
-                <th>Quantity</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Received</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                     echo "<tr><td>";
-                    echo(htmlentities($row['donationID']));
-                    echo ("</td><td>");
-                    echo(htmlentities($row['donorName']));
-                    echo ("</td><td>");
-                    echo(htmlentities($row['donationName']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['donationTypeDescription']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['donation_quantity']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['donation_description']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['date']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['date_received']));
-                   
-                    echo ("</td></tr>");
-                }
-
-            ?>
-        
-        </tbody>
-    </table>    
-
-   
     </div>
 
    
