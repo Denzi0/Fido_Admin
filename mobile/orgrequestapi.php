@@ -4,6 +4,7 @@
 	if(!$db){
 		echo "database failed";
 	}
+    $images = $_POST['images'];
     $orgname = mysqli_real_escape_string($db,$_POST['orgname']);
     $name = mysqli_real_escape_string($db,$_POST['name']);
     $quantity = mysqli_real_escape_string($db,$_POST['quantity']);
@@ -13,10 +14,16 @@
     $description = mysqli_real_escape_string($db,$_POST['description']);
     $isUrgent = mysqli_real_escape_string($db,$_POST['isUrgent']);
     $currentdate = mysqli_real_escape_string($db,$_POST['daterequest']);
+ 
+    $sql = "INSERT INTO donation_request (orgID,name,quantity,description,Urgent,requestDate,images,statusID)
+    VALUES((SELECT orgID FROM organization WHERE orgname = '$orgname'),'$name','$quantity','$description','$isUrgent' ,'$currentdate','$images','1')";
 
-    $sql = "INSERT INTO donation_request (orgID,name,quantity,description,Urgent,requestDate)
-    VALUES((SELECT orgID FROM organization WHERE orgname = '$orgname'),'$name','$quantity','$description','$isUrgent' ,'$currentdate')";
 
+    // if($sql){
+    //     echo "Success";
+    // }
+    // $db->close();
+    // return;
     $result = mysqli_query($db,$sql);
     
     if($result>0){

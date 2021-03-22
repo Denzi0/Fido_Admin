@@ -32,14 +32,14 @@
                 }
 
                 if(isset($_SESSION['successdonor'])){
-                    echo '<p style="color:green">' . $_SESSION['successdonor'] . '</p>';
+                    echo '<label class="alert alert-success">' . $_SESSION['successdonor'] . '</label>';
                     unset($_SESSION['successdonor']);
                 }
                 if(isset($_SESSION['errordonor'])){
-                    echo '<p style="color:red">' . $_SESSION['errordonor'] . '</p>';
+                    echo '<label class="alert alert-danger>' . $_SESSION['errordonor'] . '</label>';
                 }
             ?>
-    <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+    <table id="dataTable" class="table table-striped table-bordered text-center" style="width:100%">
             <h2 id="donor">Donor</h2>
             <thead class="thead-dark">
                 <tr>

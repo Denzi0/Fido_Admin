@@ -4,6 +4,11 @@
     <?php 
         include_once("components/header.php");
         require_once("databaseConn.php");
+        session_start();
+        if(empty($_SESSION['access'])){
+             header("Location: index.php");
+                    die();
+        }
         $stmt = $pdo->query("SELECT * FROM donation_view");
         $stmtdonation = $pdo->query("SELECT * FROM donation");
     ?>
@@ -15,7 +20,7 @@
     <?php include_once('components/navbar.php')?>
     <div class="container-fluid">
    
-        <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+        <table id="dataTable" class="table table-striped table-bordered text-center" style="width:100%">
             <h2 id="donor">Donations</h2>
             <thead class="thead-dark">
                 <tr>
@@ -28,7 +33,7 @@
                     <th>Date</th>
                     <th>Received</th>
                     <th>Status</th>
-                    <th>Update</th>
+                    <th>Action</th>
 
                 </tr>
             </thead>
@@ -51,7 +56,7 @@
                         echo (htmlentities($row['date']));
                         echo ("</td><td>");
                         echo (htmlentities($row['date_received']));
-                        echo ("</td><td class='text-success'>");
+                        echo ("</td><td class='text-success bg-white'>");
                         echo (htmlentities($row['statusDescription']));
                         
                         echo ("</td><td>");
@@ -63,10 +68,11 @@
             
             </tbody>
         </table>   
+    <button class="btn btn-primary" id="showDatabase">Show Database</button>
    
 
    <table id="dataTableDon" class="table table-striped table-bordered " style="width:100%">
-        <h2 id="donorDonation">Donations</h2>
+        <!-- <h2 id="donorDonation">Donations</h2> -->
         <thead class="thead-dark">
             <tr>
                 <th>DonationID</th>
@@ -123,6 +129,10 @@
         //this is table Javascript
         $(document).ready(function () {
             $('#dataTableDon').DataTable();
+            $('#showDatabase').click(function(){
+                
+                $('#dataTableDon').parents('div.dataTables_wrapper').first().toggle();
+            });
         });
     </script>
     

@@ -1,9 +1,9 @@
 <?php
     require_once('databaseConn.php');
     session_start();
-     if(empty($_SESSION['access'])){
-            header("Location: index.php");
-            die();
+    if(empty($_SESSION['access'])){
+        header("Location: index.php");
+        die();
     }
     $sql = "SELECT * FROM user";
 
@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <div class="mt-5">
             <h2>Users</h2>
-            <table id="dataTableUsers" class="table table-striped table-bordered" >
+            <table id="dataTableUsers" class="table table-striped table-bordered text-center" >
                 <thead class="thead-dark">
             
                     <tr>

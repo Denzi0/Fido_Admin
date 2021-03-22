@@ -4,8 +4,8 @@
 	if(!$db){
 		echo "database failed";
 	}
-
-    $sql = $db->query("SELECT * FROM donation_request");
+    // $orgname = mysqli_real_escape_string($db,$_POST['orgname']);
+    $sql = $db->query("SELECT * FROM donation_request_view");
 
     $result = array();
 

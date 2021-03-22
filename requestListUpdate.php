@@ -18,31 +18,38 @@
     <?php 
     
         require_once('databaseConn.php');
-        // session_start();
+        session_start();
+
+         if(empty($_SESSION['access'])){
+                    header("Location: index.php");
+                    die();
+        }
         if(isset($_POST['submit'])){
         
-            $sql = "UPDATE donation SET date_received = :date, statusID = :statusID WHERE donationID = :donationID";
+            $sql = "UPDATE donation_request SET statusID = :statusID WHERE requestID = :requestID";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
-            ':donationID' => $_POST['donationID'],
-            ':date' => $_POST['date_received'],
+            ':requestID' => $_POST['requestID'],
             ':statusID' => $_POST['statusID']
             )); 
-            header('Location: donations.php');
+            header('Location: requestList.php');
 
             return;
         }
-        $stmt = $pdo->prepare("SELECT * FROM donation_view WHERE donationID = :xyz");
-        $stmt->execute(array(':xyz' => $_GET['donationID']));
+        $stmt = $pdo->prepare("SELECT * FROM donation_request_view WHERE requestID = :xyz");
+        $stmt->execute(array(':xyz' => $_GET['requestID']));
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $statusDescription = $row['statusDescription'];
-        $statusID = $row['statusID'];
-
+        //
+        
+        //
         if($row === false) {
-            header("Location: donations.php");
+            header("Location: requestList.php");
             return;
         }
-        $donationID = htmlentities($row['donationID']);
+
+        $requestID = htmlentities($row['requestID']);
+        $currentStatus = htmlentities($row['statusDescription']);
+
         // $date = htmlentities($row['date_received']);
         // $status = htmlentities($row['statusID']);
     ?>
@@ -51,10 +58,10 @@
             <div class="row justify-content-center">
                 <div class="card w-50">
                 <div class="card-body">
-                        <div class='input-group' id='datetimepicker'>
-                            <input type='date' name="date_received" class="form-control" id='datetimepicker'/>
+                        <!-- <div class='input-group' id='datetimepicker'>
+                            <input type='date' name="date_received" class="form-control" id='datetimepicker' required />
                             <div class="invalid-feedback">Please input Value</div>
-                        </div>
+                        </div> -->
                         <!-- <div class="form-group">
                             <label for="statusID">StatusID</label>
                             <input type="text" required name="statusID" id="statusID" class="form-control">
@@ -62,11 +69,11 @@
                         </div> -->
                         <div class="form-group">
                             <select class="form-control mt-3 w-100" name="statusID" id="statusID" aria-label=".form-select-lg example" required>
-                                    <option selected value="<?=$statusID?>"><?= $statusDescription ?>(Current STATUS)</option>
+                                    <option selected><?= $currentStatus?></option>
                                     <option value="1">Pending</option>
                                     <option value="5">Approved</option>
                                     <option value="6">Disapproved</option>
-                                    
+                            
                                     <!-- <option value="1">Pending</option>
                                     <option value="2">Donation Accepted</option>
                                     <option value="3">Ready to Claim</option>
@@ -74,7 +81,7 @@
                             </select>
                             <div class="invalid-feedback">Please input Value</div>
                         </div>
-                        <input type="hidden" name="donationID" value="<?= $donationID?>">
+                        <input type="hidden" name="requestID" value="<?= $requestID?>">
                         <input class="btn btn-primary mt-4" type="submit" name="submit" id="update" value="UPDATE">
                 </div>
                 </div>
@@ -82,12 +89,9 @@
     </div>
     <?php include_once('components/myscript.php'); ?>
     <script>
-       
-            $('#datetimepicker').datetimepicker({
-                format: 'MMMM DD, YYYY',
-                date: new Date(2016, 9, 17)
-            });
-        
+         $(function () {
+             $('#datetimepicker').datetimepicker();
+         });
     </script>
     <script>
     

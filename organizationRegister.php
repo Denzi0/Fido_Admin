@@ -138,7 +138,7 @@
                         <label for="exampleFormControlFile1">Upload File</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
                     </div> -->
-                    <button class="btn btn-primary mt-2" type="submit" name="submit" id="subm">Add User</button>
+                    <button class="btn btn-primary mt-2" type="submit" name="submit" id="subm">Register</button>
                     </div>
                 </div>
                 </div>

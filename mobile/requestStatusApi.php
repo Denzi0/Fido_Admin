@@ -4,8 +4,8 @@
 	if(!$db){
 		echo "database failed";
 	}
-    $username = mysqli_real_escape_string($db,$_POST['username']);
-    $sql = $db->query("SELECT * FROM donation WHERE donorID = (SELECT donorID FROM donor WHERE userID = (SELECT userID FROM user WHERE username ='$username' ))");
+    $orgname = mysqli_real_escape_string($db,$_POST['orgname']);
+    $sql = $db->query("SELECT * FROM donation_request WHERE orgID = (SELECT orgID FROM organization WHERE orgName = '$orgname') ");
 
     $result = array();
 
