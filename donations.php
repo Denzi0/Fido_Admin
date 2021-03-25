@@ -56,7 +56,7 @@
                         echo (htmlentities($row['date']));
                         echo ("</td><td>");
                         echo (htmlentities($row['date_received']));
-                        echo ("</td><td class='text-success bg-white'>");
+                        echo ("</td><td class='bg-success text-white'>");
                         echo (htmlentities($row['statusDescription']));
                         
                         echo ("</td><td>");

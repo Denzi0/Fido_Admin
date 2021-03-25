@@ -18,38 +18,29 @@
     <?php 
     
         require_once('databaseConn.php');
-        session_start();
-
-        if(empty($_SESSION['access'])){
-            header("Location: index.php");
-            die();
-        }
+        // session_start();
         if(isset($_POST['submit'])){
         
-            $sql = "UPDATE donation_request SET statusID = :statusID WHERE requestID = :requestID";
+            $sql = "UPDATE donation_box SET statusID = :statusID WHERE donation_boxID = :donation_boxID";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
-            ':requestID' => $_POST['requestID'],
+            ':donation_boxID' => $_POST['donation_boxID'],
             ':statusID' => $_POST['statusID']
             )); 
-            header('Location: requestList.php');
+            header('Location: donation_box.php');
 
             return;
         }
-        $stmt = $pdo->prepare("SELECT * FROM donation_request_view WHERE requestID = :xyz");
-        $stmt->execute(array(':xyz' => $_GET['requestID']));
+        $stmt = $pdo->prepare("SELECT * FROM donation_box WHERE donation_boxID= :xyz");
+        $stmt->execute(array(':xyz' => $_GET['donation_boxID']));
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        //
-        
-        //
+        $statusDescription = $row['statusID'];
+      
         if($row === false) {
-            header("Location: requestList.php");
+            header("Location: donation_box.php");
             return;
         }
-
-        $requestID = htmlentities($row['requestID']);
-        $currentStatus = htmlentities($row['statusDescription']);
-
+        $donationBoxID = htmlentities($row['donation_boxID']);
         // $date = htmlentities($row['date_received']);
         // $status = htmlentities($row['statusID']);
     ?>
@@ -58,41 +49,30 @@
             <div class="row justify-content-center">
                 <div class="card w-50">
                 <div class="card-body">
-                        <!-- <div class='input-group' id='datetimepicker'>
-                            <input type='date' name="date_received" class="form-control" id='datetimepicker' required />
-                            <div class="invalid-feedback">Please input Value</div>
-                        </div> -->
-                        <!-- <div class="form-group">
-                            <label for="statusID">StatusID</label>
-                            <input type="text" required name="statusID" id="statusID" class="form-control">
-                            <div class="invalid-feedback">Please input Value</div>
-                        </div> -->
+                       
                         <div class="form-group">
                             <select class="form-control mt-3 w-100" name="statusID" id="statusID" aria-label=".form-select-lg example" required>
-                                    <option selected>CurrentStatus(<?= $currentStatus?>)</option>
+                                    <option selected value="">(Current STATUS)</option>
                                     <option value="1">Pending</option>
-                                    <option value="5">Approved</option>
-                                    <option value="6">Disapproved</option>
-                            
-                                    <!-- <option value="1">Pending</option>
                                     <option value="2">Donation Accepted</option>
                                     <option value="3">Ready to Claim</option>
-                                    <option value="4">Claim by Organization</option> -->
+                                    <option value="4">Claim by Organization</option>
+                                    <!-- <option value="5">Approved</option>
+                                    <option value="6">Disapproved</option> -->
+                                    
+                                    <!-- <option value="1">Pending</option>
+                                     -->
                             </select>
                             <div class="invalid-feedback">Please input Value</div>
                         </div>
-                        <input type="hidden" name="requestID" value="<?= $requestID?>">
+                        <input type="hidden" name="donation_boxID" value="<?= $donationBoxID?>">
                         <input class="btn btn-primary mt-4" type="submit" name="submit" id="update" value="UPDATE">
                 </div>
                 </div>
         </form>
     </div>
     <?php include_once('components/myscript.php'); ?>
-    <script>
-         $(function () {
-             $('#datetimepicker').datetimepicker();
-         });
-    </script>
+
     <script>
     
         // Example starter JavaScript for disabling form submissions if there are invalid fields

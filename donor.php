@@ -1,4 +1,14 @@
+<?php 
 
+   session_start();
+
+   if(empty($_SESSION['access'])){
+        header("Location: index.php");
+        die();
+    }
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>    
@@ -24,13 +34,7 @@
 
     <div class="container-fluid">
           <?php 
-                session_start();
-
-                if(empty($_SESSION['access'])){
-                    header("Location: index.php");
-                    die();
-                }
-
+             
                 if(isset($_SESSION['successdonor'])){
                     echo '<label class="alert alert-success">' . $_SESSION['successdonor'] . '</label>';
                     unset($_SESSION['successdonor']);

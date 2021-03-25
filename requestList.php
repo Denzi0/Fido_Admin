@@ -60,7 +60,7 @@
                     echo (htmlentities($row['requestDate']));
                     // echo ("</td><td>");
                     // echo (htmlentities($row['images']));
-                    echo ("</td><td class='bg-white text-success'>");
+                    echo ("</td><td class='bg-success text-white'>");
                     echo (htmlentities($row['statusDescription']));
                     echo ("</td><td>");
                     echo ('<a class="btn btn-primary" href="requestListUpdate.php?requestID=' .$row['requestID'] .  '">Update</a>');

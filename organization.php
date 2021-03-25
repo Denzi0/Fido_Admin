@@ -1,4 +1,6 @@
 <?php 
+        require_once("databaseConn.php");
+
                 session_start();
                 if(empty($_SESSION['access'])){
                     header("Location: index.php");

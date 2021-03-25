@@ -99,13 +99,13 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="adminpass" class="form-label">Password</label>
-                                    <input pattern=".{3,}" type="text" name="adminpass" id="adminpass"
+                                    <input pattern=".{3,}" type="password" name="adminpass" id="adminpass"
                                             class="form-control" required>
                                     <div class="invalid-feedback">Password</div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="adminpassc" class="form-label">Confirm Password</label>
-                                    <input pattern=".{3,}" type="text" name="adminpassc" id="adminpassc"
+                                    <input pattern=".{3,}" type="password" name="adminpassc" id="adminpassc"
                                             class="form-control" required>
                                     <div class="invalid-feedback">Password must match</div>
                                 </div>
