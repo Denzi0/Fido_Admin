@@ -22,7 +22,7 @@
    
         
    
-    <table id="dataTableDonationBoxView" class="text-center table table-striped table-bordered " style="width:100%">
+    <table id="dataTableDonationBoxView" class="text-center table table-striped table-bordered table-responsive " style="width:100%">
         <!-- <h2 id="donorDonation">Donations</h2> -->
         <thead class="thead-dark">
             <tr>
@@ -30,9 +30,12 @@
                 <th>Request ID</th>
                 <!-- <th>orgID</th> -->
                 <th>orgName</th>
+                <th>Request Name</th>
+
                 <th>donationID</th>
                 <!-- <th>donorID</th> -->
                 <th>donorName</th>
+                <th>donation Name</th>
                 <th>date_given</th>
                 <th>orgFeedback</th>
                 <th>statusDescription</th>
@@ -52,13 +55,18 @@
                     echo ("</td><td>");
                     echo(htmlentities($row['orgName']));
                     echo ("</td><td>");
+                    echo(htmlentities($row['name']));
+                    echo ("</td><td>");
                     echo(htmlentities($row['donationID']));
                     // echo ("</td><td>");
                     // echo(htmlentities($row['donorID']));
                     echo ("</td><td>");
                     echo(htmlentities($row['donorName']));
                     echo ("</td><td>");
+                    echo(htmlentities($row['donationName']));
+                    echo ("</td><td>");
                     echo(htmlentities($row['date_given']));
+                    
                     echo ("</td><td>");
                     echo(htmlentities($row['orgFeedback']));
                     echo ("</td><td class='text-white bg-success'>");

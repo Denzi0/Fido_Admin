@@ -48,7 +48,6 @@
         $stmt = $pdo->query("SELECT * FROM organization");
         //  $stmt = $pdo->query("SELECT orgID,orgName,orgPersonInCharge,orgContact,orgAddress,
         // orgEmail,orgTinNumber,orgPassword FROM organization");
-        $stmtRequest = $pdo->query("SELECT * FROM orgrequest");
     ?>
     <!-- //VIew -->
     
@@ -121,57 +120,7 @@
                 </tbody>
             </table>    
         </div>
-        <table id="dataTableOrgRequest" class="table table-striped table-bordered" style="width:100%">
-            <h2 id="donor">Organization Request</h2>
-            <thead class="thead-dark">
-                <tr>
-                    <th>RequestID</th>
-                    <th>OrganizationID</th>
-                    <th>Food Name</th>
-                    <th>Food Type</th>
-                    <th>Food Quantity</th>
-                    <th>Item Name</th>
-                    <th>Item Type</th>
-                    <th>Item Quantity</th>
-                    <th>Description</th>
-                    <th>Urgent</th>
-                    <th>Date Request</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-                while($row = $stmtRequest->fetch(PDO::FETCH_ASSOC)){
-                    echo "<tr><td>";
-                    echo(htmlentities($row['requestID']));
-                    echo ("</td><td>");
-                    echo(htmlentities($row['orgID']));
-                    echo ("</td><td>");
-                    echo(htmlentities($row['foodname']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['foodtype']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['foodquantity']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['itemname']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['itemtype']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['itemquantity']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['description']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['isUrgent']));
-                    echo ("</td><td>");
-                    echo (htmlentities($row['daterequest']));
-                    // echo ("</td><td>");
-                    // echo ('<a class="btn btn-primary" href="editOrg.php?orgID=' .$row['orgID'] . '">EDIT</a>');
-                    // echo ("</td><td>");
-                    // echo ('<a class="btn btn-danger" href="deleteOrg.php?orgID='  .$row['orgID'] . '">DELETE</a> ');
-                    echo ('</td></tr>');
-                }
-            ?>
-            </tbody>
-        </table> 
+       
 
     </div>
 
