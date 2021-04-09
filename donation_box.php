@@ -23,15 +23,13 @@
         
    
     <table id="dataTableDonationBoxView" class="text-center table table-striped table-bordered table-responsive " style="width:100%">
-        <!-- <h2 id="donorDonation">Donations</h2> -->
+        <h2 id="donorDonation">Donation Box</h2>
         <thead class="thead-dark">
             <tr>
                 <th>Donation Box ID</th>
                 <th>Request ID</th>
-                <!-- <th>orgID</th> -->
                 <th>orgName</th>
                 <th>Request Name</th>
-
                 <th>donationID</th>
                 <!-- <th>donorID</th> -->
                 <th>donorName</th>

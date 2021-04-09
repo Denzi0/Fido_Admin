@@ -1,11 +1,13 @@
 <?php
-        require_once("databaseConn.php");
+    
+    require_once("databaseConn.php");
+    session_start();
 
     if(isset($_POST['submit'])){
         $date = date('Y-m-d');
         $sql = "INSERT INTO donation_request(EmpID ,name,quantity,description,Urgent,requestDate,images,statusID)
-        VALUES('15', :name,:quantity,:description,'1','$date','adf','1')";
-
+        VALUES('15', :name,:quantity,:description,'0','$date','adf','1')";
+        
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
             ':name' =>  $_POST['requestname'],
@@ -13,27 +15,16 @@
             ':description' =>  $_POST['requestdesc'],
 
         ));
-        $_SESSION['donation_request'] = "Request Added";
-
+        $_SESSION['donation_requestAdmin'] = "Donation Request Added";
         header("Location: adminRequestDonation.php");
         return;
     }
-        // $stmt = $pdo->prepare("SELECT * FROM donation_request WHERE EmpID = :xyz");
-        // $stmt->execute(array(':xyz' => $_GET['EmpID']));
-        // $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        // if($row === false) {
-        //     // $_SESSION['error'] = "Bad Value for orgID";
-        //     header("Location: adminRequestDonation.php");
-        //     return;
-        // }
-        // $empID = htmlentities($row['EmpID']);
-        // // $orgName = htmlentities($row['orgName']);
-        // $orgPerson = htmlentities($row['orgPersonInCharge']);
-        // $orgContact = htmlentities($row['orgContact']);
-        // $orgAddress = htmlentities($row['orgAddress']);
-        // $orgEmail = htmlentities($row['orgEmail']);
-        // $orgTinNumber = htmlentities($row['orgTinNumber']); 
-        // $orgID = $row['orgID'];
+
+    if(isset($_SESSION['donation_requestAdmin'])){
+        $messages = '<label class="alert alert-success w-100 text-center">' .$_SESSION['donation_requestAdmin'] . '</label>';;
+        unset($_SESSION['donation_requestAdmin']);
+    }
+     
 
 ?>
 
@@ -49,15 +40,23 @@
     <?php include_once('components/navbar.php')?>
 
     <div class="container">
+    
       <form id="form" method="POST" class="form-group needs-validation" novalidate style="margin-top:50px;">
             <div class="row justify-content-center">
+                
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header bg-primary text-white">
-                            
                             <h2 class="text-center">Request Donation</h2>
                         </div>
                        <div class="card-body">
+                       <?php
+                            if(isset($messages)){ 
+                                echo $messages;
+                            }else {
+                                echo "<label class='alert alert-success w-100 text-center'>Input Donation Request</label>";
+                            }
+                       ?>
                         <div class="form-group mt-3">
                             <!--input Organization name --->
                                 <label for="requestname" class="form-label">Request Name</label>

@@ -12,11 +12,14 @@
         $stmtOrg = $pdo->query("SELECT * FROM organization");
         $stmtDonation = $pdo->query("SELECT * FROM donation");
         $stmtUsers = $pdo->query("SELECT * FROM user");
+        $stmtRequest = $pdo->query("SELECT * FROM donation_request");
         ///
         $donorCount = $stmtDonor->rowCount();
         $orgCount = $stmtOrg->rowCount();
         $donationCount = $stmtDonation->rowCount();
         $userCount = $stmtUsers->rowCount();
+        $requestCount = $stmtRequest->rowCount();
+
         //
       ?>
 <!DOCTYPE html>
@@ -85,7 +88,7 @@
                             <h2>Requests</h2>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">10</h3>
+                            <h3 class="card-title"><?= $requestCount?></h3>
                         </div>
                     </div>
                 </div>

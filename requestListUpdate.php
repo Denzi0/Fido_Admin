@@ -69,7 +69,7 @@
                         </div> -->
                         <div class="form-group">
                             <select class="form-control mt-3 w-100" name="statusID" id="statusID" aria-label=".form-select-lg example" required>
-                                    <option selected>CurrentStatus(<?= $currentStatus?>)</option>
+                                    <option selected value=''>CurrentStatus<?= $currentStatus?>)</option>
                                     <option value="1">Pending</option>
                                     <option value="5">Approved</option>
                                     <option value="6">Disapproved</option>

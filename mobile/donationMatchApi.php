@@ -4,8 +4,8 @@
 	if(!$db){
 		echo "database failed";
 	}
-    // $orgname = mysqli_real_escape_string($db,$_POST['orgname']);
-    $sql = $db->query("SELECT * FROM donation_request_view ORDER BY requestDate and Urgent");
+    $donationMatch = mysqli_real_escape_string($db,$_POST['donationMatch']);
+    $sql = $db->query("SELECT * FROM donation_request_view  WHERE name LIKE '%$donationMatch%' ");
 
     $result = array();
 
@@ -13,7 +13,6 @@
         $result[] = $rowdata; 
     }
     echo json_encode($result);
-
 
 
 ?>

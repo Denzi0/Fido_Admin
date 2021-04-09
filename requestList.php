@@ -7,6 +7,7 @@
         }
     $stmt = $pdo->query("SELECT * FROM donation_request");
     $stmtView = $pdo->query("SELECT * FROM donation_request_view");
+    $stmtAdminView = $pdo->query("SELECT * FROM admin_request_view");
 
 ?>
 
@@ -22,9 +23,9 @@
     <?php include_once('components/navbar.php')?>
 
     <div class="container-fluid">
-    <table id="dataTableView" class="table table-striped table-bordered mt-3 text-center" style="width:100%">
+    <table id="dataTableView" class="table table-striped table-bordered mt-3 text-center " style="width:100%">
         <h2 id="donorDonation">Donation Requests</h2>
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>RequestID</th>
                 <th>Organization Name</th>
@@ -71,6 +72,56 @@
         
         </tbody>
     </table>    
+    <!-- comment -->
+    <table id="dataTableViewAdmin" class="table table-striped table-bordered mt-3 text-center" style="width:100%">
+        <h2 id="donorDonation">Admin Request</h2>
+        <thead class="thead-dark">
+            <tr>
+                <th>RequestID</th>
+                <th>Admin ID</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Urgent</th>
+                <th>Request Date</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                while($row = $stmtAdminView->fetch(PDO::FETCH_ASSOC)){
+                    echo "<tr><td>";
+                    echo(htmlentities($row['requestID']));
+                
+                    echo ("</td><td>");
+                    echo(htmlentities($row['EmpID']));
+                    echo ("</td><td>");
+                    echo (htmlentities($row['name']));
+                    echo ("</td><td>");
+                    echo (htmlentities($row['quantity']));
+                    echo ("</td><td>");
+                    echo (htmlentities($row['description']));
+                    echo ("</td><td>");
+                    echo (htmlentities($row['Urgent']));
+                    echo ("</td><td>");
+                    echo (htmlentities($row['requestDate']));
+                    // echo ("</td><td>");
+                    // echo (htmlentities($row['images']));
+                    echo ("</td><td class='bg-success text-white'>");
+                    echo (htmlentities($row['statusDescription']));
+                    echo ("</td><td>");
+                    echo ('<a class="btn btn-primary" href="adminRequestDonationUpdate.php?requestID='.$row['requestID'].'">Update</a>');
+                    echo ("</td></tr>");
+                }
+
+            ?>
+        
+        </tbody>
+    </table>    
+    <!-- comment -->
+
     <button class="btn btn-primary" id="showDatabase">Show Database</button>
      <table id="dataTableReq" class="table table-striped table-bordered mt-3 text-center" style="width:100%">
         <!-- <h2 id="donorDonation">Donation Requests</h2> -->
@@ -147,6 +198,9 @@
         });
         $(document).ready(function () {
             $('#dataTableReq').DataTable();
+        });
+          $(document).ready(function () {
+            $('#dataTableViewAdmin').DataTable();
         });
     </script>
 </body>
