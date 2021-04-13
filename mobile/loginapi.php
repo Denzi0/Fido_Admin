@@ -5,24 +5,30 @@
 		echo "database failed";
 	}
 
-	// $fname = $_POST['fullname'];
-	// $address = $_POST['address'];
+
 	$username = $_POST['username'];
-	// $email = $_POST['email'];
-	// $age = $_POST['age'];
-	// $contact = $_POST['contact'];
+	
+
 	$password = $_POST['password'];
 
-    $sql = "SELECT * FROM user WHERE username = '".$username."'  AND password = '".$password."' AND usertype ='Donor' ";
-
+    $sql = "SELECT * FROM user WHERE username = '".$username."'  AND usertype ='Donor' ";
+//  AND password = '".$password."'f
 	$result = mysqli_query($db, $sql);
 
     $count  = mysqli_num_rows($result);
     
-    if($count == 1){
-        echo json_encode("Success");
-    }else {
+    if($count > 0){
+		$row = mysqli_fetch_array($result);
+		$passwordhash = $row['password'];
+		if(password_verify($password,$passwordhash)){
+			echo json_encode("Success");
+		}
+		else {
+        	echo json_encode("Error");
+    	}
+	}
+    else {
         echo json_encode("Error");
-
     }
+
 ?>

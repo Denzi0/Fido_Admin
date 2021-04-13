@@ -27,7 +27,9 @@
 	$contact = mysqli_real_escape_string($db,$_POST['contact']);
 	$password = mysqli_real_escape_string($db,$_POST['password']);
 	$donortype = mysqli_real_escape_string($db,$_POST['donortype']);
-	
+
+	$hashpasswordDonor = password_hash($password,PASSWORD_DEFAULT);
+
 	
 	
 	
@@ -40,7 +42,7 @@
 		echo json_encode("Error");
 	}else{
 			$sqlReg = "INSERT INTO user(username,password,usertype)
-			VALUES('$username','$password','Donor')";
+			VALUES('$username','$hashpasswordDonor','Donor')";
 			$resultReg = mysqli_query($db,$sqlReg);
 			
 			$insert = "INSERT INTO donor(donorName,donorTypeID,donorAddress,donorEmail,donorAge

@@ -30,13 +30,15 @@
                 <th>Request ID</th>
                 <th>orgName</th>
                 <th>Request Name</th>
+                <th>Request Status</th>
                 <th>donationID</th>
                 <!-- <th>donorID</th> -->
                 <th>donorName</th>
                 <th>donation Name</th>
+                <th>donation Status</th>
                 <th>date_given</th>
                 <th>orgFeedback</th>
-                <th>statusDescription</th>
+                <th>Status</th>
                 <th>Action</th>
 
             </tr>
@@ -54,14 +56,34 @@
                     echo(htmlentities($row['orgName']));
                     echo ("</td><td>");
                     echo(htmlentities($row['name']));
+                    echo ("</td><td class='text-white  bg-info'>");
+                    if($row['requestStatus'] == '1'){
+                        echo htmlentities("Pending");
+                    }
+                    if($row['requestStatus'] == '5'){
+                        echo htmlentities("Approved");
+                    }
+                    if($row['requestStatus'] == '6') {
+                        echo htmlentities("Dissapprove");
+                    }
                     echo ("</td><td>");
-                    echo(htmlentities($row['donationID']));
+                    echo(htmlentities($row['donationID'] ));
                     // echo ("</td><td>");
                     // echo(htmlentities($row['donorID']));
                     echo ("</td><td>");
                     echo(htmlentities($row['donorName']));
                     echo ("</td><td>");
                     echo(htmlentities($row['donationName']));
+                    echo ("</td><td class='text-white bg-info'>");
+                    if($row['donationStatus'] == '1'){
+                        echo htmlentities("Pending");
+                    }
+                    if($row['donationStatus'] == '5'){
+                        echo htmlentities("Approved");
+                    }
+                    if($row['donationStatus'] == '6') {
+                        echo htmlentities("Dissapprove");
+                    }
                     echo ("</td><td>");
                     echo(htmlentities($row['date_given']));
                     

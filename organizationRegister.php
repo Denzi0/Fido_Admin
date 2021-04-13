@@ -29,13 +29,15 @@
             $file = $_FILES['myfile']['tmp_name'];
             $data = $_FILES['myfile']['tmp_name'];
             ///file uploading
+            $passwordOrg = $_POST['orgpassword']; 
+            $hashpasswordOrganization = password_hash($passwordOrg,PASSWORD_DEFAULT);
 
             $sqlUser = "INSERT INTO user(username,password,usertype)
             VALUES(:username ,:password ,'Organization')";
             $stmtUser = $pdo->prepare($sqlUser);
             $stmtUser->execute(array(
                 ':username' => $_POST['orgname'],
-                ':password' => $_POST['orgpassword']
+                ':password' => $hashpasswordOrganization
             ));
             $count = $stmtUser->rowCount();
             $orgname = $_POST['orgname'];
@@ -119,13 +121,13 @@
                     </div>
                     <div class="form-group">
                         <label for="orgpassword">Password</label>
-                        <input type="text" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$" minlength="5"
+                        <input type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$" minlength="5"
                             id="orgpassword" class="form-control" name="orgpassword" required>
                         <div class="invalid-feedback">Please input field</div>
                     </div>
                     <div class="form-group">
                         <label for="orgconfirmpass">Confirm Password</label>
-                        <input type="text" id="orgconfirmpass" class="form-control" name="orgconfirmpass" required>
+                        <input type="password" id="orgconfirmpass" class="form-control" name="orgconfirmpass" required>
                         <div class="invalid-feedback">Password doesn't match</div>
                     </div>
               

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <!-- edited -->
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/autofill/2.3.5/css/autoFill.bootstrap4.min.css">
+    <link rel="sylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <title>Organization</title>
+</head>
+<body >
+
+    <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading text-dark"><img src="assets/images/appname.svg" style="height:40px;width:40px"> Admin System</div>
+      <div class="list-group list-group-flush">
+        <a href="dashboard.php" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="donor.php" class="list-group-item list-group-item-action bg-light ">Donor</a>
+        <a href="organization.php" class="list-group-item list-group-item-action bg-light">Organization</a>
+        <a href="users.php" class="list-group-item list-group-item-action bg-light">Users</a>
+        <a href="donations.php" class="list-group-item list-group-item-action bg-light">Donations</a>
+        <a href="requestList.php" class="list-group-item list-group-item-action bg-light">Request List</a>
+        <a href="adminRequestDonation.php" class="list-group-item list-group-item-action bg-light">Request Donation</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom " >
+        <button class="btn btn-light" id="menu-toggle"><i class="fas fa-align-left" style="color:#23d2aa"></i></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+</nav>    <!-- model -->
+        <!-- //VIew -->
+    
+        <!-- <a href="barangayRegister.php" class="btn btn-primary">Register Barangay</a> -->
+        <br />
+<b>Warning</b>:  Undefined array key "name" in <b>C:\xampp\htdocs\phpPractice\organization.php</b> on line <b>46</b><br />
+<br />
+<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\phpPractice\organization.php:46) in <b>C:\xampp\htdocs\phpPractice\organization.php</b> on line <b>46</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "name" in <b>C:\xampp\htdocs\phpPractice\organization.php</b> on line <b>47</b><br />
+<br />
+<b>Warning</b>:  readfile(filesUploads/): Failed to open stream: No such file or directory in <b>C:\xampp\htdocs\phpPractice\organization.php</b> on line <b>47</b><br />

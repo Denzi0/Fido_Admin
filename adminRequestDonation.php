@@ -5,8 +5,9 @@
 
     if(isset($_POST['submit'])){
         $date = date('Y-m-d');
-        $sql = "INSERT INTO donation_request(EmpID ,name,quantity,description,Urgent,requestDate,images,statusID)
-        VALUES('15', :name,:quantity,:description,'0','$date','adf','1')";
+
+        $sql = "INSERT INTO donation_request(EmpID ,name,quantity,description,Urgent,requestDate,statusID)
+        VALUES('15', :name,:quantity,:description,'1','$date','1')";
         
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
