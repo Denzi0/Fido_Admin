@@ -13,16 +13,32 @@
     <?php include_once('components/navbar.php');?>
 
     <?php 
+        // use PHPMailer\src\PHPMailer;
+        // use PHPMailer\scr\Exception;
+        
+
+       
+
 
         require_once('databaseConn.php');
         session_start();
+        require_once("PHPMailer/src/PHPMailer.php");
+        require_once("PHPMailer/src/Exception.php");
+        require_once("PHPMailer/src/SMTP.php");
+
+        $randomPassword = substr(str_shuffle('abcdefghjkmnopqrstuvwxyz0123456778990-123ABCDEFGHJKMNOPQRSTUVWXYZ0123456789') , 0 , 10 );
         if(empty($_SESSION['access'])){
             header("Location: index.php");
             die();
         }
+       
         if(isset($_POST['orgname']) && isset($_POST['orgincharge']) && isset($_POST['orgcontact']) && isset($_POST['orgaddress'])
         && isset($_POST['orgemail']) && isset($_POST['orgtinNo']) && isset($_POST['orgpassword'])){
+        // require 'PHPMailer/src/PHPMailer.php';
 
+            ///php Mailer
+            
+            //Mailer
             //file uploading
             $filename = $_FILES['myfile']['name'];
             $destination = 'filesUploads/'.$filename;
@@ -54,11 +70,39 @@
                 ':orgemail' => $_POST['orgemail'],
                 ':orgtinNo' => $_POST['orgtinNo'],
                 ':files' => $filename,
-                )); 
+                ));
+                
+                ////////
+
+                $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+
+                $mail->SMTPDebug = 2;                           
+                $mail->isSMTP();      
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'ssl';
+                $mail->Host = "smtp.gmail.com";
+                $mail->Port = 465;                    
+                $mail->isHTML();
+                     
+                $mail->Username = 'denzellanzaderas@gmail.com';    
+                $mail->Password = 'denziolanzx44';    
+
+                $mail->SetFrom("test@gmail.com");
+                $mail->Subject = "Fido(Food and Item Donation Tracking System)";
+                $mail->AddAddress($_POST['orgemail'], "Organization Name");
+                $mail->Body = "Hello Thank you for registering. Below is your login credentials <br> Username : " .$_POST['orgname'] ."<br>Password : ".$_POST['orgpassword']."";
                 $_SESSION['success'] = 'Record Added';
-            
                 header("Location: organization.php");
-                return;
+                // return;
+                if(!$mail->send()){
+                    echo "<label >Mailer Error: " . $mail->ErrorInfo. "</label>";
+
+                }
+                else{
+                   echo "<label >Mailer Success</label>";
+                }
+
+                
                 }
             }
 
@@ -121,26 +165,28 @@
                     </div>
                     <div class="form-group">
                         <label for="orgpassword">Password</label>
-                        <input type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$" minlength="5"
+                        <input value='<?= $randomPassword?>' type="password"  minlength="5"
                             id="orgpassword" class="form-control" name="orgpassword" required>
-                        <div class="invalid-feedback">Please input field</div>
+                    <!-- <button class="btn btn-danger text-white mt-2" id="generate">Generate Password</button> -->
+                    <div class="invalid-feedback">Please input field</div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="orgconfirmpass">Confirm Password</label>
                         <input type="password" id="orgconfirmpass" class="form-control" name="orgconfirmpass" required>
                         <div class="invalid-feedback">Password doesn't match</div>
-                    </div>
+                    </div> -->
               
                     <!-- blob -->
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="customFile" name="myfile" required>
-                        <label class="custom-file-label" for="customFile">Securities and Exchange Commission Form</label>
+                        <label class="custom-file-label" for="customFile">Securities and Exchange Commission Form </label>
                     </div>
                     <!-- <div class="form-group">
                         <label for="exampleFormControlFile1">Upload File</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
                     </div> -->
                     <button class="btn btn-primary mt-2" type="submit" name="submit" id="subm">Register</button>
+
                     </div>
                 </div>
                 </div>

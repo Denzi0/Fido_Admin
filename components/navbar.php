@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom " >
-        <button class="btn btn-light" id="menu-toggle"><i class="fas fa-align-left" style="color:#23d2aa"></i></button>
+        <button class="btn btn-dark" id="menu-toggle"><i class="fas fa-align-left" style="color:white "></i></button>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

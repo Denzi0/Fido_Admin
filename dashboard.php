@@ -14,6 +14,9 @@
         $stmtUsers = $pdo->query("SELECT * FROM user");
         $stmtRequest = $pdo->query("SELECT * FROM donation_request");
         ///
+        // $donationFetch = $stmtDonation->fetch(PDO::FETCH_ASSOC);
+        // var_dump($donationFetch['donationID'] );
+        // $foodcount = $donationFetch['donationTypeID'];
         $donorCount = $stmtDonor->rowCount();
         $orgCount = $stmtOrg->rowCount();
         $donationCount = $stmtDonation->rowCount();
@@ -65,7 +68,7 @@
                 <div class="col-md-4" >
                     <div class="card text-center">
                         <div class="card-header bg-primary text-white">
-                            <h2>Total Users</h2>
+                            <h2>Current Users</h2>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title"><?= $userCount?></h3>
@@ -108,17 +111,16 @@
     var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Donor', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Donor', 'Organization', 'Total Users', 'Donations', 'Request',],
         datasets: [{
-            label: '# of Votes',
-            data: [<?= $donorCount ?>, 19, 3, 5, 2, 3],
+            label: 'Fido',
+            data: [<?= $donorCount ?>, <?= $orgCount ?>, <?=$userCount?>, <?= $donationCount ?>, <?= $requestCount ?>],
             backgroundColor: [
                 '#6c757d',
-                '#03506f',
-                '#f2a154',
-                '#1687a7',
-                '#ffe227',
-                '#00af91'
+                '#ffc107',
+                '#007bff',
+                '#28a745',
+                '#28a745',
             ],
             
             borderWidth: 1

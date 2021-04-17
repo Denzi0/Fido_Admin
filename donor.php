@@ -49,7 +49,7 @@
                 <tr>
                     <th>Donor ID</th>
                     <th>Name</th>
-                    <th>Type ID</th>
+                    <th>Type</th>
                     <th>Address</th>
                     <th>Email</th>
                     <th>Age</th>
@@ -66,7 +66,14 @@
                         echo ("</td><td>");
                         echo(htmlentities($row['donorName']));
                         echo ("</td><td>");
-                        echo(htmlentities($row['donorTypeID']));
+                        if($row['donorTypeID'] == 1){
+                            echo htmlentities("Individual");
+                        }else {
+                            echo htmlentities("Organization");
+                        }
+                        
+                        
+                        
                         echo ("</td><td>");
                         echo(htmlentities($row['donorAddress']));
                         echo ("</td><td>");

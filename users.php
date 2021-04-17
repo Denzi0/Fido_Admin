@@ -52,7 +52,7 @@
                             echo (htmlentities($row['usertype']));
                             echo "</td><td>";
                             echo ('<a class="btn btn-danger" href="userDelete.php?userID='  .$row['userID'] . '">DELETE</a> ');
-                            echo ('<a class="btn btn-primary" href="userUpdate.php?userID='  .$row['userID'] . '">UPDATE</a> ');
+                            // echo ('<a class="btn btn-primary" href="userUpdate.php?userID='  .$row['userID'] . '">UPDATE</a> ');
                             echo "</td></tr>";
                         }
     

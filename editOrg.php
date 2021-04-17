@@ -53,6 +53,8 @@
         $orgID = $row['orgID'];
     ?>
     <div class="container-fluid">
+        <div class="card">
+        <div class="card-body">
         <form id="form"  method="POST" class="form-group needs-validation" novalidate style="margin-top:50px;" 
         oninput='orgconfirmpass.setCustomValidity(orgconfirmpass.value != orgpassword.value ? "Passwords do not match." : "")'>
             <div class="row justify-content-center">
@@ -105,6 +107,8 @@
                     <input class="btn btn-primary" type="submit" name="submit" id="update" value="UPDATE">
                 </div>
         </form>
+        </div>
+        </div>
     </div>
     <?php include_once('components/myscript.php'); ?>
     <script>
