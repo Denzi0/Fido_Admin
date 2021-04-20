@@ -80,6 +80,7 @@
                         <th>Contact</th>
                         <th>Address</th>
                         <th>Email</th>
+                        <th>Website</th>
                         <th>TIN No.</th>
                         <th>UserID</th>
                         <th>Files</th>
@@ -103,6 +104,8 @@
                     echo (htmlentities($row['orgAddress']));
                     echo ("</td><td>");
                     echo (htmlentities($row['orgEmail']));
+                    echo ("</td><td>");
+                    echo (htmlentities($row['orgWebsite']));
                     echo ("</td><td>");
                     echo (htmlentities($row['orgTinNumber']));
                     echo ("</td><td>");

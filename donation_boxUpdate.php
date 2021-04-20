@@ -20,7 +20,6 @@
         require_once('databaseConn.php');
         // session_start();
         if(isset($_POST['submit'])){
-        
             $sql = "UPDATE donation_box SET date_given = :date ,statusID = :statusID WHERE donation_boxID = :donation_boxID";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
@@ -28,14 +27,47 @@
             ':date' => $_POST['date_given'],
             ':statusID' => $_POST['statusID']
             )); 
+            // print_r( $stmt);
+            // exit();
+            if($_POST['statusID'] == '4'){
+                $x = $_POST['donation_requestID'];
+                // $y = $_POST['donation_requestID'];
+                $donorqty = $_POST['donation_quantity'];
+                $stmtdonation_box = $pdo->query("SELECT * FROM donation_request WHERE requestID = '$x'");
+                while($row = $stmtdonation_box->fetch(PDO::FETCH_ASSOC)){
+                    $id = $row['requestID'];
+                    $qty = $row['quantity'];
+                    $sqlrequestupdate = "UPDATE donation_request SET quantity = :qty WHERE requestID =:id";
+                    $stmtrequestupdate = $pdo->prepare($sqlrequestupdate);
+
+                    $stmtrequestupdate->execute(array(
+                        'qty' => $qty - $donorqty,
+                        'id' => $id
+                    ));
+                    
+                    // print_r( $sqlrequestupdate);
+                    // exit();
+                }
+                // $sqlrequestUpdate = "SELECT quantity from donation_request WHERE requestID = '1231231338'";
+                // $stmtrequestUpdate = $pdo->query($sqlrequestUpdate);
+                // $stmtrequestUpdate->execute(array(
+                //     ':orgrequestID' => $_GET['donation_boxID'],
+                // ));
+                // print_r( $stmtdonation_box);
+                // exit();
+            }
             header('Location: donation_box.php');
             return;
         }
+        
+        
+
         $stmt = $pdo->prepare("SELECT * FROM donation_box WHERE donation_boxID= :xyz");
         $stmt->execute(array(':xyz' => $_GET['donation_boxID']));
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $statusID = $row['statusID'];
       
+
         if($row === false) {
             header("Location: donation_box.php");
             return;
@@ -69,6 +101,8 @@
                             <div class="invalid-feedback">Please input Value</div>
                         </div>
                         <input type="hidden" name="donation_boxID" value="<?= $donationBoxID?>">
+                        <input type="hidden" name="donation_requestID" value="<?= $_GET["requestID"]?>">
+                        <input type="hidden" name="donation_quantity" value="<?= $_GET["quantity"]?>">
                         <input class="btn btn-primary mt-4" type="submit" name="submit" id="update" value="UPDATE">
                 </div>
                 </div>

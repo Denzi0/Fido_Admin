@@ -30,11 +30,12 @@
                 <th>Request ID</th>
                 <th>orgName</th>
                 <th>Request Name</th>
+                <th>Request quantity</th>
                 <th>Request Status</th>
                 <th>donationID</th>
-                <!-- <th>donorID</th> -->
                 <th>donorName</th>
                 <th>donation Name</th>
+                <th>donation quantity</th>
                 <th>donation Status</th>
                 <th>date_given</th>
                 <th>orgFeedback</th>
@@ -54,8 +55,12 @@
                     // echo(htmlentities($row['orgID']));
                     echo ("</td><td>");
                     echo(htmlentities($row['orgName']));
+                   
                     echo ("</td><td>");
                     echo(htmlentities($row['name']));
+                      echo ("</td><td>");
+                    echo(htmlentities($row['quantity']));
+                     
                     echo ("</td><td class='text-white  bg-info'>");
                     if($row['requestStatus'] == '1'){
                         echo htmlentities("Pending");
@@ -74,6 +79,9 @@
                     echo(htmlentities($row['donorName']));
                     echo ("</td><td>");
                     echo(htmlentities($row['donationName']));
+                     echo ("</td><td>");
+                    echo(htmlentities($row['donation_quantity']));
+                    
                     echo ("</td><td class='text-white bg-info'>");
                     if($row['donationStatus'] == '1'){
                         echo htmlentities("Pending");
@@ -93,7 +101,7 @@
                    
                     echo(htmlentities($row['statusDescription']));
                     echo ("</td><td>");
-                    echo ('<a class="btn btn-primary" href="donation_boxUpdate.php?donation_boxID=' .$row['donation_boxID'] . '">Notify</a>');
+                    echo ('<a class="btn btn-primary" href="donation_boxUpdate.php?donation_boxID=' .$row['donation_boxID'].'&requestID=' .$row['requestID'].'&quantity=' .$row['donation_quantity'].'">Notify</a>');
                     echo ("</td></tr>");
                 }
 

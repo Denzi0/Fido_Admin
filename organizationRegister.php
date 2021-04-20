@@ -33,7 +33,7 @@
         }
        
         if(isset($_POST['orgname']) && isset($_POST['orgincharge']) && isset($_POST['orgcontact']) && isset($_POST['orgaddress'])
-        && isset($_POST['orgemail']) && isset($_POST['orgtinNo']) && isset($_POST['orgpassword'])){
+        && isset($_POST['orgemail']) && isset($_POST['orgtinNo']) && isset($_POST['orgpassword']) && isset($_POST['orgwebsite'])){
         // require 'PHPMailer/src/PHPMailer.php';
 
             ///php Mailer
@@ -59,8 +59,8 @@
             $orgname = $_POST['orgname'];
             if($count > 0){
                 if(move_uploaded_file($file,$destination)){
-                $sql = "INSERT INTO organization (orgName, orgPersonInCharge,orgContact,orgAddress,orgEmail,orgTinNumber ,orgfiles,userID)
-                VALUES(:orgname , :orgincharge , :orgcontact, :orgaddress,:orgemail ,:orgtinNo,:files ,(SELECT userID FROM user WHERE username = '$orgname'))";
+                $sql = "INSERT INTO organization (orgName, orgPersonInCharge,orgContact,orgAddress,orgEmail ,orgWebsite,orgTinNumber ,orgfiles,userID)
+                VALUES(:orgname , :orgincharge , :orgcontact, :orgaddress,:orgemail ,:orgwebsite,:orgtinNo,:files ,(SELECT userID FROM user WHERE username = '$orgname'))";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(array(
                 ':orgname' => $_POST['orgname'],
@@ -68,6 +68,7 @@
                 ':orgcontact' => $_POST['orgcontact'],
                 ':orgaddress' => $_POST['orgaddress'],
                 ':orgemail' => $_POST['orgemail'],
+                ':orgwebsite' => $_POST['orgwebsite'],
                 ':orgtinNo' => $_POST['orgtinNo'],
                 ':files' => $filename,
                 ));
@@ -91,7 +92,7 @@
                 $mail->Subject = "Fido(Food and Item Donation Tracking System)";
                 $mail->AddAddress($_POST['orgemail'], "Organization Name");
                 $mail->Body = "Hello Thank you for registering. Below is your login credentials <br> Username : " .$_POST['orgname'] ."<br>Password : ".$_POST['orgpassword']."";
-                $_SESSION['success'] = 'Record Added';
+                $_SESSION['success'] = 'Record Added   Credentials Sent via Email';
                 header("Location: organization.php");
                 // return;
                 if(!$mail->send()){
@@ -152,20 +153,24 @@
                         <div class="invalid-feedback">Please input Value</div>
                     </div> 
                     <div class="form-group">
+                        <label for="orgwebsite">Website</label>
+                        <input placeholder='www.example.com' type="text" name="orgwebsite" id="orgwebsite" class="form-control" required>
+                        <div class="invalid-feedback">Please input value.</div>
+                    </div>
+                 <div class="form-group">
                         <label for="orgemail">Email</label>
                         <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="orgemail" id="orgemail" class="form-control" required>
                         <div class="invalid-feedback">Please input value. Example email@gmail.com</div>
                     </div>
-
                     <div class="form-group">
                         <label for="orgtinNo">TIN No.</label>
-                        <input pattern="[0-9]+" placeholder="XXX-XXX-XXX-XXX" type="text"
+                        <input minlength="9" maxlength="9" pattern="[0-9]+" placeholder="XXX-XXX-XXX-XXX" type="text"
                             id="orgtinNo" class="form-control" name="orgtinNo" required>
                         <div class="invalid-feedback">Invalid TIN No. Must have 9 numbers</div>
                     </div>
                     <div class="form-group">
-                        <label for="orgpassword">Password</label>
-                        <input value='<?= $randomPassword?>' type="password"  minlength="5"
+                        <!-- <label for="orgpassword">Password</label> -->
+                        <input value='<?= $randomPassword?>' type="hidden"  minlength="5"
                             id="orgpassword" class="form-control" name="orgpassword" required>
                     <!-- <button class="btn btn-danger text-white mt-2" id="generate">Generate Password</button> -->
                     <div class="invalid-feedback">Please input field</div>

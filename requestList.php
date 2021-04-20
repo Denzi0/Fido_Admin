@@ -30,8 +30,8 @@
                 <th>RequestID</th>
                 <th>Organization Name</th>
                 <th>Admin</th>
-
-                <th>Name</th>
+                <th>Donation Request Name</th>
+                <th>Type</th>
                 <th>Quantity</th>
                 <th>Description</th>
                 <th>Urgent</th>
@@ -54,6 +54,8 @@
                     echo(htmlentities($row['EmpID']));
                     echo ("</td><td>");
                     echo (htmlentities($row['name']));
+                    echo ("</td><td>");
+                    echo (htmlentities($row['type']));
                     echo ("</td><td>");
                     echo (htmlentities($row['quantity']));
                     echo ("</td><td>");

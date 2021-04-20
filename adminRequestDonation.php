@@ -60,8 +60,8 @@
                        ?>
                         <div class="form-group mt-3">
                             <!--input Organization name --->
-                                <label for="requestname" class="form-label">Request Name</label>
-                                <input pattern=".{3,}" type="text" name="requestname" id="requestname"
+                                <label for="requestname" class="form-label">Donation Request Name</label>
+                                <input placeholder='e.g Canned Goods, Bottled Water etc..' pattern=".{3,}" type="text" name="requestname" id="requestname"
                                         class="form-control" required>
                                 <div class="invalid-feedback">Please input value</div>
                             </div>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="requestdesc" class="form-label">Description</label>
-                                <textarea id="requestdesc" name="requestdesc" class="form-control w-100" required></textarea>
+                                <textarea placeholder='Input Donation Request Details...' id="requestdesc" name="requestdesc" class="form-control w-100" required></textarea>
                                 <div class="invalid-feedback">Please input value</div>
                             </div>
                             <input type="hidden" value=""/>

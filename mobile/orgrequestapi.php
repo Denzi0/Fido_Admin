@@ -7,6 +7,7 @@
     $images = $_POST['images'];
     $orgname = mysqli_real_escape_string($db,$_POST['orgname']);
     $name = mysqli_real_escape_string($db,$_POST['name']);
+    $type = mysqli_real_escape_string($db,$_POST['type']);
     $quantity = mysqli_real_escape_string($db,$_POST['quantity']);
     // $itemname = mysqli_real_escape_string($db,$_POST['itemname']);
     // $itemtype = mysqli_real_escape_string($db,$_POST['itemtype']);
@@ -14,9 +15,9 @@
     $description = mysqli_real_escape_string($db,$_POST['description']);
     $isUrgent = mysqli_real_escape_string($db,$_POST['isUrgent']);
     $currentdate = mysqli_real_escape_string($db,$_POST['daterequest']);
- 
-    $sql = "INSERT INTO donation_request (orgID,name,quantity,description,Urgent,requestDate,images,statusID)
-    VALUES((SELECT orgID FROM organization WHERE orgname = '$orgname'),'$name','$quantity','$description','$isUrgent' ,'$currentdate','$images','1')";
+    
+    $sql = "INSERT INTO donation_request (orgID,name,type,quantity,description,Urgent,requestDate,images,statusID)
+    VALUES((SELECT orgID FROM organization WHERE orgname = '$orgname'),'$name','$type','$quantity','$description','$isUrgent' ,'$currentdate','$images','1')";
 
 
     // if($sql){

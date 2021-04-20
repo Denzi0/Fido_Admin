@@ -9,6 +9,7 @@
     $sql = $db->query("SELECT * FROM donation_box_view WHERE donorID = (SELECT donorID FROM donor WHERE userID = (SELECT userID FROM user WHERE username='$donorname'))");
     $result = array();
 
+    
     while($rowdata = $sql->fetch_assoc()){
         $result[] = $rowdata; 
     }

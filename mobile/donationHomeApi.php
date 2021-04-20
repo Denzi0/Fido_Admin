@@ -19,7 +19,7 @@
     VALUES((SELECT donorID FROM donor WHERE userID = (SELECT userID FROM user WHERE username = '$donorname')),'$donationname','$donationtype','$donationquantity','$description','$date','1')";
     $resultdon = mysqli_query($db,$sqldon);
     // $rowcount = mysqli_num_rows($resultdon);
-    
+   
     // $sql = "UPDATE donation_request SET donationID = '420'
     // WHERE requestID = '$requestID'";
     // $result = mysqli_query($db,$sql);
@@ -31,7 +31,10 @@
     
         $resultdonationBox = mysqli_query($db,$sqldonationBox);
     }
-  
+    // $sqlOutAlgo = "UPDATE donation_request SET quantity = quantity - '$donationquantity' WHERE requestID = '$requestID'";
+    // $resultAlgo = mysqli_query($db,$sqlOutAlgo);
+
+
     // $sqlcheck = "SELECT * from donation where donorID = '205'"; 
     // $resultcheck = mysqli_query($db, $sqlcheck);
     // $count  = mysqli_num_rows($resultcheck);
