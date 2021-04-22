@@ -6,7 +6,7 @@
                     die();
         }
     $stmt = $pdo->query("SELECT * FROM donation_request");
-    $stmtView = $pdo->query("SELECT * FROM donation_request_view");
+    $stmtView = $pdo->query("SELECT * FROM donation_request_view ORDER BY requestDate ASC, importance DESC,Urgent DESC");
     $stmtAdminView = $pdo->query("SELECT * FROM admin_request_view");
 
 ?>
@@ -34,6 +34,7 @@
                 <th>Type</th>
                 <th>Quantity</th>
                 <th>Description</th>
+                <th>Importance</th>
                 <th>Urgent</th>
                 <th>Request Date</th>
                 <th>Status</th>
@@ -60,6 +61,8 @@
                     echo (htmlentities($row['quantity']));
                     echo ("</td><td>");
                     echo (htmlentities($row['description']));
+                    echo ("</td><td>");
+                    echo (htmlentities($row['importance']));
                     echo ("</td><td>");
                     echo (htmlentities($row['Urgent']));
                     echo ("</td><td>");

@@ -38,6 +38,7 @@
 	    $sqlReg = "INSERT INTO organization(orgName,orgPersonInCharge,orgContact,orgAddress,orgEmail,orgWebsite,orgTinNumber, orgfiles,userID)
 	    VALUES('$orgname','$personincharge','$contact','$address' ,'$email','$website','$tinNumber','files',(SELECT userID FROM user WHERE username ='$orgname' ))";
 	    $resultReg = mysqli_query($db,$sqlReg);
+		
     }
 	if ($resultReg) {
 		echo json_encode("Success");

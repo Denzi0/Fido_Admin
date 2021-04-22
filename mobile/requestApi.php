@@ -5,7 +5,7 @@
 		echo "database failed";
 	}
     // $orgname = mysqli_real_escape_string($db,$_POST['orgname']);
-    $sql = $db->query("SELECT * FROM donation_request_view ORDER BY requestDate ASC, Urgent DESC");
+    $sql = $db->query("SELECT * FROM donation_request_view ORDER BY requestDate ASC, importance DESC,Urgent DESC");
 
     $result = array();
 
