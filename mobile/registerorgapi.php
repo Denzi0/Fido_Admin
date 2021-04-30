@@ -18,6 +18,7 @@
 	if(!$db){
 		echo "database failed";
 	}
+  	$file = $_FILES['files']['name'];
 
 	$orgname = mysqli_real_escape_string($db,$_POST['orgname']);
 	$personincharge = mysqli_real_escape_string($db,$_POST['personInCharge']);
@@ -26,25 +27,26 @@
 	$website = mysqli_real_escape_string($db,$_POST['website']);
 	$email = mysqli_real_escape_string($db,$_POST['email']);
 	$tinNumber = mysqli_real_escape_string($db,$_POST['tinNumber']);
+	////
+  	$filePath ="../filesUploads/".$file;
 
-    ///
+    ///	
     $passwordRandom = mysqli_real_escape_string($db,$_POST['randompassword']);
 	$hashpasswordDonor = password_hash($passwordRandom,PASSWORD_DEFAULT);
 
 	$sqluserOrgReg = "INSERT INTO user(username,password,usertype)
 	VALUES('$orgname','$hashpasswordDonor','Organization')";
 	$resultorgReg = mysqli_query($db,$sqluserOrgReg);
+	move_uploaded_file($_FILES['files']['tmp_name'],$filePath);
     if($resultorgReg){
 	    $sqlReg = "INSERT INTO organization(orgName,orgPersonInCharge,orgContact,orgAddress,orgEmail,orgWebsite,orgTinNumber, orgfiles,userID)
-	    VALUES('$orgname','$personincharge','$contact','$address' ,'$email','$website','$tinNumber','files',(SELECT userID FROM user WHERE username ='$orgname' ))";
+	    VALUES('$orgname','$personincharge','$contact','$address' ,'$email','$website','$tinNumber','$file',(SELECT userID FROM user WHERE username ='$orgname' ))";
 	    $resultReg = mysqli_query($db,$sqlReg);
-		
     }
 	if ($resultReg) {
 		echo json_encode("Success");
 	} 
 			
-		// (SELECT userID FROM user WHERE userID = '$username')
 			
 	
 ?>

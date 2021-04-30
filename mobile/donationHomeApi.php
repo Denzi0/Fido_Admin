@@ -11,12 +11,14 @@
 
     $donationquantity = mysqli_real_escape_string($db,$_POST['donationquantity']);
     $description = mysqli_real_escape_string($db,$_POST['description']);
+    $donationImages = mysqli_real_escape_string($db,$_POST['donationImages']);
+
     $date = mysqli_real_escape_string($db,$_POST['date']);
 
    
         ////
-    $sqldon = "INSERT INTO donation (donorID,donationName,donationTypeID,donation_quantity,donation_description,date,statusID)
-    VALUES((SELECT donorID FROM donor WHERE userID = (SELECT userID FROM user WHERE username = '$donorname')),'$donationname','$donationtype','$donationquantity','$description','$date','1')";
+    $sqldon = "INSERT INTO donation (donorID,donationName,donationTypeID,donation_quantity,donation_description,donation_image,date,statusID)
+    VALUES((SELECT donorID FROM donor WHERE userID = (SELECT userID FROM user WHERE username = '$donorname')),'$donationname','$donationtype','$donationquantity','$description', '$donationImages','$date','1')";
     $resultdon = mysqli_query($db,$sqldon);
     // $rowcount = mysqli_num_rows($resultdon);
    

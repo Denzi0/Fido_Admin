@@ -7,7 +7,7 @@
         $date = date('Y-m-d');
 
         $sql = "INSERT INTO donation_request(EmpID ,name,quantity,description,Urgent,requestDate,statusID)
-        VALUES('15', :name,:quantity,:description,'1','$date','5')";
+        VALUES('15', :name,:quantity,:description,'20','$date','5')";
         
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(

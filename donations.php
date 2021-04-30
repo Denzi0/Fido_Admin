@@ -33,7 +33,7 @@
                     <th>Date</th>
                     <th>Received</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
 
                 </tr>
             </thead>
@@ -59,9 +59,9 @@
                         echo ("</td><td class='bg-success text-white'>");
                         echo (htmlentities($row['statusDescription']));
                         
-                        echo ("</td><td>");
-                        echo ('<a class="btn btn-primary" href="donationUpdate.php?donationID=' .$row['donationID'] . '">Update</a>');
-                        echo ("</td></tr>");
+                        // echo ("</td><td>");
+                        // echo ('<a class="btn btn-primary" href="donationUpdate.php?donationID=' .$row['donationID'] . '">Update</a>');
+                        // echo ("</td></tr>");
                     }
 
                 ?>

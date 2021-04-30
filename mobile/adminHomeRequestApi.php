@@ -5,7 +5,7 @@
 		echo "database failed";
 	}
     // $orgname = mysqli_real_escape_string($db,$_POST['orgname']);
-    $sql = $db->query("SELECT * FROM admin_request_view ORDER BY requestDate and Urgent");
+    $sql = $db->query("SELECT * FROM admin_request_view ORDER BY requestDate ASC and Urgent DESC");
 
     $result = array();
 

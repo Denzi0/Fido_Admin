@@ -13,12 +13,11 @@
     // $itemtype = mysqli_real_escape_string($db,$_POST['itemtype']);
     // $itemquantity = mysqli_real_escape_string($db,$_POST['itemquantity']);
     $description = mysqli_real_escape_string($db,$_POST['description']);
-    $importance = mysqli_real_escape_string($db,$_POST['importance']);
     $isUrgent = mysqli_real_escape_string($db,$_POST['isUrgent']);
     $currentdate = mysqli_real_escape_string($db,$_POST['daterequest']);
     
-    $sql = "INSERT INTO donation_request (orgID,name,type,quantity,description,importance,Urgent,requestDate,images,statusID)
-    VALUES((SELECT orgID FROM organization WHERE orgname = '$orgname'),'$name','$type','$quantity','$description','$importance','$isUrgent' ,'$currentdate','$images','1')";
+    $sql = "INSERT INTO donation_request (orgID,name,type,quantity,description,Urgent,requestDate,images,statusID)
+    VALUES((SELECT orgID FROM organization WHERE orgname = '$orgname'),'$name','$type','$quantity','$description','$isUrgent' ,'$currentdate','$images','1')";
 
 
    

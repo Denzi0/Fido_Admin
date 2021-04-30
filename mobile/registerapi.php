@@ -54,7 +54,6 @@
 				echo json_encode("Success");
 			} 
 			
-		// (SELECT userID FROM user WHERE userID = '$username')
 			
 	}
 ?>

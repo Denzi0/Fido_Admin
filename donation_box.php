@@ -37,10 +37,10 @@
                 <th>donation Name</th>
                 <th>donation quantity</th>
                 <th>donation Status</th>
-                <th>date_given</th>
+                <th>date Recieved</th>
                 <th>orgFeedback</th>
                 <th>Status</th>
-                <th>Action</th>
+                <!-- <th>Action</th> -->
 
             </tr>
         </thead>
@@ -100,9 +100,19 @@
                     echo ("</td><td class='text-white bg-success'>");
                    
                     echo(htmlentities($row['statusDescription']));
-                    echo ("</td><td>");
-                    echo ('<a class="btn btn-primary" href="donation_boxUpdate.php?donation_boxID=' .$row['donation_boxID'].'&requestID=' .$row['requestID'].'&quantity=' .$row['donation_quantity'].'">Notify</a>');
+                    // echo ("</td><td>");
+                    // echo ('<a class="btn btn-primary" href="donation_boxUpdate.php?donation_boxID=' .$row['donation_boxID'].'&requestID=' .$row['requestID'].'&quantity=' .$row['donation_quantity'].'">Notify</a>');
                     echo ("</td></tr>");
+
+                    // if($row['statusDescription'] == "Claimed By Organization"){
+                    //     $sqlrequestupdate = "UPDATE donation_request SET quantity = :qty WHERE requestID =:id";
+                    //     $stmtrequestupdate = $pdo->prepare($sqlrequestupdate);
+
+                    //     $stmtrequestupdate->execute(array(
+                    //     'qty' => $row['quantity'] - $row['donation_quantity'],
+                    //     'id' => $row['requestID']
+                    //     ));
+                    // }
                 }
 
             ?>
@@ -118,7 +128,7 @@
                 <th>Donation Box ID</th>
                 <th>Request ID</th>
                 <th>Donation ID</th>
-                <th>Date Given</th>
+                <th>Date Recieved</th>
                 <th>Org feedback</th>
 
                 <th>Status</th>
@@ -142,8 +152,8 @@
                     echo(htmlentities($row['orgFeedback']));
                     echo ("</td><td>");
                     echo(htmlentities($row['statusID']));
-                    echo ("</td><td>");
-                    echo ('<a class="btn btn-primary" href="donation_boxUpdate.php?donation_boxID=' .$row['donation_boxID'] . '">Notify</a>');
+                    // echo ("</td><td>");
+                    // echo ('<a class="btn btn-primary" href="donation_boxUpdate.php?donation_boxID=' .$row['donation_boxID'] . '">Notify</a>');
                     echo ("</td></tr>");
                 }
 

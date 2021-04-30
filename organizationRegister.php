@@ -57,7 +57,7 @@
             ));
             $count = $stmtUser->rowCount();
             $orgname = $_POST['orgname'];
-            if($count > 0){
+            if($count > 0){ 
                 if(move_uploaded_file($file,$destination)){
                 $sql = "INSERT INTO organization (orgName, orgPersonInCharge,orgContact,orgAddress,orgEmail ,orgWebsite,orgTinNumber ,orgfiles,userID)
                 VALUES(:orgname , :orgincharge , :orgcontact, :orgaddress,:orgemail ,:orgwebsite,:orgtinNo,:files ,(SELECT userID FROM user WHERE username = '$orgname'))";
@@ -183,7 +183,7 @@
               
                     <!-- blob -->
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" name="myfile" required>
+                        <input type="file" class="custom-file-input" id="customFile" name="myfile[]" multiple required >
                         <label class="custom-file-label" for="customFile">Securities and Exchange Commission Form </label>
                     </div>
                     <!-- <div class="form-group">

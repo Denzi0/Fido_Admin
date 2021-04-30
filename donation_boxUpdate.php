@@ -29,7 +29,7 @@
             )); 
             // print_r( $stmt);
             // exit();
-            if($_POST['statusID'] == '4'){
+            if($_POST['statusID'] == '7'){
                 $x = $_POST['donation_requestID'];
                 // $y = $_POST['donation_requestID'];
                 $donorqty = $_POST['donation_quantity'];
@@ -91,12 +91,8 @@
                                     <option value="1">Pending</option>
                                     <option value="2">Donation Accepted</option>
                                     <option value="3">Ready to Claim</option>
-                                    <option value="4">Claim by Organization</option>
-                                    <!-- <option value="5">Approved</option>
-                                    <option value="6">Disapproved</option> -->
+                                    <option value="7">Claim by Organization</option>
                                     
-                                    <!-- <option value="1">Pending</option>
-                                     -->
                             </select>
                             <div class="invalid-feedback">Please input Value</div>
                         </div>

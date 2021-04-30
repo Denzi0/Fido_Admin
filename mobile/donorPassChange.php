@@ -11,10 +11,10 @@
     $count = mysqli_num_rows($select);
 
     $newPass = rand(11111,9999);
-
+    $newPassHash = password_hash($newPass,PASSWORD_DEFAULT);
     if($count == 1){
         //problem is id
-        $update = $db->query("UPDATE user SET password ='$newPass' WHERE userID = (SELECT userID FROM donor WHERE donorID='$id')");
+        $update = $db->query("UPDATE user SET password ='$newPassHash' WHERE userID = (SELECT userID FROM donor WHERE donorID='$id')");
         if($update){
             echo json_decode($newPass);
         }
